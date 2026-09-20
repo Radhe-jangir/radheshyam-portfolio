@@ -55,8 +55,8 @@ export default function App() {
   return (
     <div className={`relative min-h-screen antialiased overflow-x-hidden transition-colors duration-300 ${
       isDark 
-        ? 'bg-[#070913] text-slate-100 selection:bg-indigo-500 selection:text-white' 
-        : 'bg-[#f8fafc] text-slate-900 selection:bg-indigo-600 selection:text-white'
+        ? 'bg-[#090b10] text-slate-100 selection:bg-amber-500/30 selection:text-amber-200 bg-engineer-grid-dark' 
+        : 'bg-[#f8fafc] text-slate-900 selection:bg-amber-500/30 selection:text-amber-900 bg-engineer-grid-light'
     }`}>
       {/* Interactive 3D WebGL Multi-Color Background Particles */}
       <BackgroundParticles />

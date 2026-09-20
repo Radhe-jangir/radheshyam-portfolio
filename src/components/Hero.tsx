@@ -10,76 +10,126 @@ import {
   Github, 
   Linkedin,
   CheckCircle,
-  FileCode,
-  Layers
+  Copy,
+  Check,
+  Code2,
+  Terminal,
+  Activity
 } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const [imgError, setImgError] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
   const { theme } = useTheme();
   const isDark = theme === 'dark';
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(PERSONAL_INFO.email);
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 2200);
+    } catch {
+      // Fallback
+    }
+  };
 
   return (
     <section
       id="home"
-      className="relative min-h-[90vh] pt-28 pb-16 lg:pt-36 lg:pb-28 xl:pt-40 xl:pb-32 flex items-center justify-center overflow-hidden w-full"
+      className="relative min-h-[92vh] pt-28 pb-16 lg:pt-36 lg:pb-28 xl:pt-40 xl:pb-32 flex items-center justify-center overflow-hidden w-full"
     >
-      {/* Subtle Background Radial Ambient Glows */}
-      <div className={`absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[500px] rounded-full blur-[140px] pointer-events-none ${
-        isDark ? 'bg-gradient-to-tr from-indigo-600/15 via-purple-600/10 to-cyan-500/15' : 'bg-gradient-to-tr from-indigo-400/10 via-sky-400/10 to-purple-300/10'
+      {/* Subtle Architectural Ambient Glow */}
+      <div className={`absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1000px] h-[450px] rounded-full blur-[160px] pointer-events-none ${
+        isDark ? 'bg-amber-500/[0.04]' : 'bg-amber-500/[0.03]'
       }`} />
 
       <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 2xl:px-18 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 2xl:gap-20 items-center">
           
-          {/* Left Column: Hero Copy & Actions */}
+          {/* Left Column: Hero Copy & Proof Strip */}
           <div className="lg:col-span-7 xl:col-span-7 flex flex-col items-start text-left">
             
-            {/* Top Pill Badge */}
+            {/* Top Engineering Status Pill */}
             <div
               id="hero-badge"
-              className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider mb-6 transition-all border ${
+              className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider mb-6 transition-all border ${
                 isDark 
-                  ? 'bg-indigo-950/40 border-indigo-500/30 text-cyan-300 shadow-[0_0_15px_rgba(99,102,241,0.15)]' 
-                  : 'bg-indigo-50/80 border-indigo-200 text-indigo-800 shadow-sm'
+                  ? 'bg-[#121622] border-white/10 text-amber-400 shadow-sm' 
+                  : 'bg-amber-50/80 border-amber-200 text-amber-800 shadow-sm'
               }`}
             >
-              <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
-              <span>{PERSONAL_INFO.badge}</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>SYSTEM ONLINE // BCA CS @ IGNTU • 8.8 MERIT</span>
             </div>
 
-            {/* Main Cinematic Heading with Luminous Gradient Accent */}
+            {/* Main Punchy Engineering Headline */}
             <h1
               id="hero-title"
-              className={`font-display text-4xl sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl font-extrabold tracking-tight leading-[1.06] mb-6 transition-colors ${
+              className={`font-display text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black tracking-tight leading-[1.07] mb-6 transition-colors ${
                 isDark ? 'text-white' : 'text-slate-950'
               }`}
             >
-              Turning Data Into <br />
-              <span className="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent underline decoration-2 underline-offset-8 decoration-cyan-400/30">
-                Intelligence.
-              </span>
+              Engineering <span className="gradient-text-amber">Intelligent</span> Systems. <br className="hidden sm:inline" />
+              Extracting <span className="text-emerald-400">Signal</span> From Noise.
             </h1>
 
             {/* Supporting Bio Text */}
             <p
               id="hero-description"
-              className={`text-base sm:text-lg lg:text-xl leading-relaxed max-w-3xl mb-8 font-normal transition-colors ${
+              className={`text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mb-8 font-normal transition-colors ${
                 isDark ? 'text-slate-300' : 'text-slate-700'
               }`}
             >
-              Hi, I&apos;m <span className={`font-semibold ${isDark ? 'text-cyan-300' : 'text-indigo-900'}`}>Radheshyam Suthar</span> — an AI/ML and Data Analytics developer building practical machine learning systems, intelligent applications, and data-driven solutions.
+              Hi, I&apos;m <span className={`font-semibold ${isDark ? 'text-white' : 'text-slate-950'}`}>Radheshyam Suthar</span> — an AI/ML and Data Analytics developer specialized in predictive machine learning models, statistical data analysis, and scalable full-stack applications with high-velocity execution.
             </p>
 
-            {/* Call to Actions (No recruiter button) */}
+            {/* Proof-of-Work Metrics Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 w-full">
+              <div className={`p-3 rounded-xl border transition-all ${
+                isDark ? 'bg-[#0f131c]/80 border-white/[0.08] hover:border-amber-400/40' : 'bg-white border-slate-200 shadow-sm'
+              }`}>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block mb-0.5">Academic Merit</span>
+                <span className="text-xl font-mono font-bold text-amber-400">8.8 / 10</span>
+                <span className="text-[10px] text-slate-500 block truncate">IGNTU BCA CS</span>
+              </div>
+
+              <div className={`p-3 rounded-xl border transition-all ${
+                isDark ? 'bg-[#0f131c]/80 border-white/[0.08] hover:border-emerald-400/40' : 'bg-white border-slate-200 shadow-sm'
+              }`}>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block mb-0.5">Projects Built</span>
+                <span className="text-xl font-mono font-bold text-emerald-400">10+ ML Builds</span>
+                <span className="text-[10px] text-slate-500 block truncate">Full-Stack &amp; AI</span>
+              </div>
+
+              <div className={`p-3 rounded-xl border transition-all ${
+                isDark ? 'bg-[#0f131c]/80 border-white/[0.08] hover:border-sky-400/40' : 'bg-white border-slate-200 shadow-sm'
+              }`}>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block mb-0.5">Core Stack</span>
+                <span className="text-xl font-mono font-bold text-sky-400">Python • ML</span>
+                <span className="text-[10px] text-slate-500 block truncate">PyTorch • Scikit</span>
+              </div>
+
+              <div className={`p-3 rounded-xl border transition-all ${
+                isDark ? 'bg-[#0f131c]/80 border-white/[0.08] hover:border-emerald-400/40' : 'bg-white border-slate-200 shadow-sm'
+              }`}>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block mb-0.5">Availability</span>
+                <div className="flex items-center gap-1.5 mt-1">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className={`text-xs font-mono font-bold ${isDark ? 'text-slate-200' : 'text-slate-900'}`}>Open to Roles</span>
+                </div>
+                <span className="text-[10px] text-slate-500 block truncate mt-0.5">Internship / AI Roles</span>
+              </div>
+            </div>
+
+            {/* Call to Actions */}
             <div className="flex flex-wrap items-center gap-3.5 mb-8 w-full sm:w-auto">
               <a
                 id="hero-explore-btn"
                 href="#projects"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 shadow-lg shadow-indigo-500/25 hover:shadow-cyan-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-md shadow-amber-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
-                <span>Explore 3D Projects</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>Explore Technical Projects</span>
+                <ArrowRight className="w-4 h-4 text-slate-950" />
               </a>
 
               <a
@@ -87,58 +137,48 @@ export const Hero: React.FC = () => {
                 href="#contact"
                 className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border font-bold text-xs transition-all hover:scale-[1.02] active:scale-[0.98] ${
                   isDark 
-                    ? 'bg-slate-900/80 border-slate-700/80 text-slate-200 hover:bg-slate-800 hover:border-indigo-400/50 shadow-md' 
+                    ? 'bg-[#121622] border-white/10 text-slate-200 hover:bg-[#181d2c] hover:border-amber-400/50 shadow-sm' 
                     : 'bg-white border-slate-300 text-slate-800 hover:bg-slate-50 hover:border-slate-400 shadow-sm'
                 }`}
               >
-                <Mail className="w-4 h-4 text-cyan-400" />
+                <Mail className="w-4 h-4 text-amber-400" />
                 <span>Contact Me</span>
               </a>
 
-              <a
-                id="hero-skills-btn"
-                href="#skills"
+              <button
+                id="hero-copy-email-btn"
+                onClick={handleCopyEmail}
                 className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl border font-mono font-semibold text-xs transition-all hover:scale-[1.02] active:scale-[0.98] ${
                   isDark 
-                    ? 'bg-transparent border-slate-800 text-slate-400 hover:text-white hover:border-slate-600' 
+                    ? 'bg-transparent border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20' 
                     : 'bg-transparent border-slate-200 text-slate-600 hover:text-black hover:border-slate-400'
                 }`}
               >
-                <Layers className="w-3.5 h-3.5" />
-                <span>View Tech Stack</span>
-              </a>
+                {copiedEmail ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-emerald-400" />
+                    <span className="text-emerald-400 font-bold">Email Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5 opacity-70" />
+                    <span>Copy Email</span>
+                  </>
+                )}
+              </button>
             </div>
 
-            {/* Secondary Status Badge & Education Meta */}
-            <div className={`flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-6 border-t w-full ${
-              isDark ? 'border-slate-800/80' : 'border-slate-200'
-            }`}>
-              <div className={`inline-flex items-center gap-2.5 text-xs sm:text-sm font-mono ${
-                isDark ? 'text-slate-400' : 'text-slate-600'
-              }`}>
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse" />
-                <span>AI/ML Research &amp; Applied Data Engineering</span>
-              </div>
-
-              <div className={`inline-flex items-center gap-2 text-xs sm:text-sm font-mono sm:ml-auto ${
-                isDark ? 'text-slate-400' : 'text-slate-600'
-              }`}>
-                <GraduationCap className="w-4 h-4 shrink-0 text-indigo-400" />
-                <span className="truncate">IGNTU • 3rd Year BCA CS</span>
-              </div>
-            </div>
-
-            {/* Social Links Quick Access */}
-            <div className="flex items-center gap-3 mt-6">
+            {/* Social Links Quick Access Strip */}
+            <div className="flex items-center gap-3">
               <a
                 id="hero-github-link"
                 href={PERSONAL_INFO.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className={`p-2.5 rounded-lg border transition-all ${
+                className={`p-2.5 rounded-xl border transition-all ${
                   isDark 
-                    ? 'bg-slate-900/80 border-slate-800 text-slate-300 hover:text-white hover:border-indigo-500/50 hover:shadow-[0_0_12px_rgba(99,102,241,0.2)]' 
-                    : 'bg-slate-100 border-slate-300 text-slate-700 hover:text-black hover:border-indigo-400'
+                    ? 'bg-[#121622] border-white/10 text-slate-300 hover:text-amber-400 hover:border-amber-400/40 shadow-sm' 
+                    : 'bg-white border-slate-300 text-slate-700 hover:text-black hover:border-amber-500 shadow-sm'
                 }`}
                 aria-label="GitHub Profile"
               >
@@ -149,10 +189,10 @@ export const Hero: React.FC = () => {
                 href={PERSONAL_INFO.linkedinUrl}
                 target="_blank"
                 rel="noreferrer"
-                className={`p-2.5 rounded-lg border transition-all ${
+                className={`p-2.5 rounded-xl border transition-all ${
                   isDark 
-                    ? 'bg-slate-900/80 border-slate-800 text-slate-300 hover:text-white hover:border-cyan-500/50 hover:shadow-[0_0_12px_rgba(0,240,255,0.2)]' 
-                    : 'bg-slate-100 border-slate-300 text-slate-700 hover:text-black hover:border-cyan-500'
+                    ? 'bg-[#121622] border-white/10 text-slate-300 hover:text-amber-400 hover:border-amber-400/40 shadow-sm' 
+                    : 'bg-white border-slate-300 text-slate-700 hover:text-black hover:border-amber-500 shadow-sm'
                 }`}
                 aria-label="LinkedIn Profile"
               >
@@ -161,10 +201,10 @@ export const Hero: React.FC = () => {
               <a
                 id="hero-email-link"
                 href={`mailto:${PERSONAL_INFO.email}`}
-                className={`p-2.5 rounded-lg border transition-all ${
+                className={`p-2.5 rounded-xl border transition-all ${
                   isDark 
-                    ? 'bg-slate-900/80 border-slate-800 text-slate-300 hover:text-white hover:border-purple-500/50 hover:shadow-[0_0_12px_rgba(168,85,247,0.2)]' 
-                    : 'bg-slate-100 border-slate-300 text-slate-700 hover:text-black hover:border-purple-400'
+                    ? 'bg-[#121622] border-white/10 text-slate-300 hover:text-amber-400 hover:border-amber-400/40 shadow-sm' 
+                    : 'bg-white border-slate-300 text-slate-700 hover:text-black hover:border-amber-500 shadow-sm'
                 }`}
                 aria-label="Email Radheshyam"
               >
@@ -174,18 +214,18 @@ export const Hero: React.FC = () => {
 
           </div>
 
-          {/* Right Column: Interactive AI 3D Neural Visualizer & Developer Identifier */}
+          {/* Right Column: Developer ID Card + Interactive AI Workbench */}
           <div className="lg:col-span-5 xl:col-span-5 flex flex-col gap-4 items-center w-full">
             {/* Developer Identifier Card */}
             <div className={`w-full flex items-center justify-between p-3.5 sm:p-4 rounded-2xl border transition-all ${
               isDark 
-                ? 'bg-[#0d1122]/80 backdrop-blur-xl border-indigo-500/20 text-white shadow-lg shadow-black/40' 
-                : 'bg-white/90 backdrop-blur-xl border-slate-200 text-slate-900 shadow-md'
+                ? 'bg-[#0f131c]/90 backdrop-blur-xl border-white/[0.08] text-white shadow-xl shadow-black/40' 
+                : 'bg-white/95 backdrop-blur-xl border-slate-200 text-slate-900 shadow-md'
             }`}>
               <div className="flex items-center gap-3">
                 {/* Profile Image / Placeholder */}
                 <div className={`relative w-12 h-12 rounded-xl border flex items-center justify-center overflow-hidden shrink-0 ${
-                  isDark ? 'bg-indigo-950/60 border-indigo-500/30 text-white' : 'bg-slate-100 border-slate-300 text-slate-900'
+                  isDark ? 'bg-[#151a27] border-white/10 text-white' : 'bg-slate-100 border-slate-300 text-slate-900'
                 }`}>
                   {!imgError ? (
                     <img
@@ -196,20 +236,20 @@ export const Hero: React.FC = () => {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="font-display font-bold text-base tracking-wider bg-gradient-to-br from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                    <div className="font-mono font-bold text-base tracking-wider text-amber-400">
                       RS
                     </div>
                   )}
-                  <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-slate-900" />
+                  <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-slate-950" />
                 </div>
 
                 <div className="flex flex-col">
                   <div className="flex items-center gap-1.5">
                     <span className="font-display font-bold text-sm sm:text-base">{PERSONAL_INFO.name}</span>
-                    <CheckCircle className="w-3.5 h-3.5 text-cyan-400" />
+                    <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
                   </div>
                   <span className={`font-mono text-xs ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-                    BCA Computer Science • IGNTU
+                    AI/ML &amp; Data Analytics Developer
                   </span>
                 </div>
               </div>
@@ -218,16 +258,16 @@ export const Hero: React.FC = () => {
                 href="#about"
                 className={`hidden sm:inline-flex items-center gap-1 text-[11px] font-mono px-3 py-1.5 rounded-lg border transition-all ${
                   isDark 
-                    ? 'bg-indigo-950/40 border-indigo-500/30 text-indigo-300 hover:text-white hover:border-cyan-400' 
-                    : 'bg-slate-100 border-slate-300 text-slate-800 hover:text-black hover:border-indigo-400'
+                    ? 'bg-[#121622] border-white/10 text-amber-300 hover:text-white hover:border-amber-400' 
+                    : 'bg-slate-100 border-slate-300 text-slate-800 hover:text-black hover:border-amber-500'
                 }`}
               >
-                <span>Profile</span>
+                <span>About</span>
                 <ArrowRight className="w-3 h-3" />
               </a>
             </div>
 
-            {/* 3D Neural Net Visualizer */}
+            {/* Interactive Multi-Mode AI Workbench */}
             <HeroAiVisualizer />
           </div>
 

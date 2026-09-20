@@ -124,7 +124,8 @@ export const Footer: React.FC = () => {
       <div className={`border-t px-4 sm:px-8 py-2.5 flex flex-wrap items-center justify-between text-[10px] font-mono uppercase tracking-wider gap-2 ${
         isDark ? 'border-neutral-800 bg-neutral-950 text-neutral-400' : 'border-neutral-200 bg-neutral-50 text-neutral-600'
       }`}>
-        <div>RADHESHYAM_SUTHAR // PORTFOLIO_MONOCHROME_V2</div>
+        <div>RADHESHYAM_SUTHAR // </div> 
+        {/* PORTFOLIO_MONOCHROME_V2 */}
         <div className="flex flex-wrap items-center gap-4 sm:gap-6">
           <span>LATENCY: 14MS</span>
           <span>UPTIME: 99.9%</span>

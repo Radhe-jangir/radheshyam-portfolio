@@ -78,32 +78,39 @@ export const Navbar: React.FC<NavbarProps> = ({
         <a
           id="nav-logo"
           href="#home"
-          className="flex items-center gap-3 group focus:outline-none"
+          className="flex items-center gap-3.5 group focus:outline-none"
         >
-          <div className={`w-9 h-9 rounded-xl flex items-center justify-center font-display font-black text-sm tracking-wider transition-all duration-300 group-hover:scale-105 ${
+          <div className={`w-9 h-9 rounded-xl flex items-center justify-center font-mono font-bold text-sm tracking-wider transition-all duration-300 group-hover:border-amber-400/50 border ${
             isDark 
-              ? 'bg-gradient-to-tr from-indigo-600 to-cyan-500 text-white shadow-[0_0_15px_rgba(99,102,241,0.4)]' 
-              : 'bg-gradient-to-tr from-indigo-600 to-cyan-600 text-white shadow-md'
+              ? 'bg-[#121622] border-white/10 text-amber-400 shadow-sm shadow-black/40' 
+              : 'bg-white border-slate-300 text-amber-600 shadow-sm'
           }`}>
             RS
           </div>
 
           <div className="flex flex-col">
-            <span className={`font-display font-bold text-sm tracking-tight transition-colors ${
-              isDark ? 'text-white group-hover:text-cyan-400' : 'text-slate-900 group-hover:text-indigo-600'
-            }`}>
-              {PERSONAL_INFO.name}
-            </span>
+            <div className="flex items-center gap-2">
+              <span className={`font-display font-bold text-sm tracking-tight transition-colors ${
+                isDark ? 'text-white group-hover:text-amber-400' : 'text-slate-900 group-hover:text-amber-600'
+              }`}>
+                {PERSONAL_INFO.name}
+              </span>
+              {/* Pulsing Status Dot */}
+              <span className="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Available
+              </span>
+            </div>
             <span className={`font-mono text-[9px] tracking-widest uppercase font-semibold ${
               isDark ? 'text-slate-400' : 'text-slate-500'
             }`}>
-              AI/ML • DATA ANALYTICS
+              AI/ML • DATA SYSTEMS
             </span>
           </div>
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav id="desktop-nav" className="hidden xl:flex items-center gap-5 2xl:gap-7 text-xs font-semibold uppercase tracking-wider">
+        <nav id="desktop-nav" className="hidden xl:flex items-center gap-6 2xl:gap-8 text-xs font-semibold uppercase tracking-wider">
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.substring(1);
             return (
@@ -114,8 +121,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className={`transition-all py-1 cursor-pointer whitespace-nowrap ${
                   isActive
                     ? isDark
-                      ? 'text-cyan-400 font-bold underline underline-offset-8 decoration-cyan-400 decoration-2'
-                      : 'text-indigo-600 font-bold underline underline-offset-8 decoration-indigo-600 decoration-2'
+                      ? 'text-amber-400 font-bold underline underline-offset-8 decoration-amber-400 decoration-2'
+                      : 'text-amber-600 font-bold underline underline-offset-8 decoration-amber-600 decoration-2'
                     : isDark
                       ? 'text-slate-400 hover:text-white'
                       : 'text-slate-600 hover:text-black'
@@ -138,14 +145,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             title={`Switch to ${isDark ? 'Light' : 'Dark'} Mode`}
             className={`p-2 rounded-xl border transition-all active:scale-95 flex items-center justify-center ${
               isDark 
-                ? 'bg-slate-900/80 border-slate-800 text-amber-300 hover:bg-slate-800 hover:border-amber-400/40 shadow-sm' 
-                : 'bg-slate-100 border-slate-300 text-slate-800 hover:bg-slate-200 hover:border-slate-400 shadow-sm'
+                ? 'bg-[#121622] border-white/10 text-amber-300 hover:bg-[#181d2c] hover:border-amber-400/40 shadow-sm' 
+                : 'bg-white border-slate-300 text-slate-800 hover:bg-slate-100 hover:border-slate-400 shadow-sm'
             }`}
           >
             {isDark ? (
               <Sun className="w-4 h-4 text-amber-400 transition-transform hover:rotate-45" />
             ) : (
-              <Moon className="w-4 h-4 text-indigo-900 transition-transform hover:-rotate-12" />
+              <Moon className="w-4 h-4 text-slate-800 transition-transform hover:-rotate-12" />
             )}
           </button>
 
@@ -154,10 +161,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             id="nav-copy-email-btn"
             onClick={handleCopyEmail}
             title="Click to copy email address"
-            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-mono border transition-all active:scale-95 ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono border transition-all active:scale-95 ${
               isDark 
-                ? 'bg-slate-900/80 border-slate-800 text-slate-300 hover:border-indigo-500/50 hover:text-white' 
-                : 'bg-white border-slate-300 text-slate-700 hover:border-indigo-400 hover:text-black shadow-sm'
+                ? 'bg-[#121622] border-white/10 text-slate-300 hover:border-amber-400/40 hover:text-white' 
+                : 'bg-white border-slate-300 text-slate-700 hover:border-amber-500/50 hover:text-black shadow-sm'
             }`}
           >
             {copiedEmail ? (
@@ -177,10 +184,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           <a
             id="nav-connect-btn"
             href="#contact"
-            className="flex items-center gap-1.5 px-4 py-1.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 shadow-md shadow-indigo-600/20 transition-all active:scale-95"
+            className="flex items-center gap-1.5 px-4 py-1.5 rounded-xl text-xs font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-sm transition-all hover:scale-[1.02] active:scale-95"
           >
             <span>Let&apos;s Connect</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <ArrowUpRight className="w-3.5 h-3.5 text-slate-950" />
           </a>
         </div>
 

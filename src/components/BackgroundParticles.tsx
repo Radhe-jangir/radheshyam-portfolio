@@ -26,39 +26,39 @@ export const BackgroundParticles: React.FC = () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // Particle Swarm (Multi-color Neural Constellation)
-    const particleCount = 260;
+    // Particle Swarm (Precision Constellation Field)
+    const particleCount = 180;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
     const velocities = new Float32Array(particleCount * 3);
 
-    // Color palette for particles
+    // High-end precision palette: warm amber, emerald, titanium cobalt, and muted steel
     const darkPalette = [
-      new THREE.Color(0x00f0ff), // Cyan
-      new THREE.Color(0x818cf8), // Indigo
-      new THREE.Color(0xc084fc), // Purple
-      new THREE.Color(0x34d399), // Emerald
-      new THREE.Color(0x38bdf8), // Sky
+      new THREE.Color(0xf59e0b), // Signal Amber
+      new THREE.Color(0xfbbf24), // Warm Gold
+      new THREE.Color(0x10b981), // Emerald
+      new THREE.Color(0x38bdf8), // Cobalt / Sky
+      new THREE.Color(0x94a3b8), // Slate
     ];
 
     const lightPalette = [
-      new THREE.Color(0x0284c7), // Sky 600
-      new THREE.Color(0x4f46e5), // Indigo 600
-      new THREE.Color(0x9333ea), // Purple 600
+      new THREE.Color(0xd97706), // Amber 600
       new THREE.Color(0x059669), // Emerald 600
+      new THREE.Color(0x0284c7), // Sky 600
+      new THREE.Color(0x64748b), // Slate 500
     ];
 
     const palette = isDark ? darkPalette : lightPalette;
 
     for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 1300;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 1100;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 900;
+      positions[i * 3] = (Math.random() - 0.5) * 1200;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 1000;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 700;
 
-      velocities[i * 3] = (Math.random() - 0.5) * 0.35;
-      velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.35;
-      velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.35;
+      velocities[i * 3] = (Math.random() - 0.5) * 0.22;
+      velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.22;
+      velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.22;
 
       const col = palette[Math.floor(Math.random() * palette.length)];
       colors[i * 3] = col.r;
@@ -69,12 +69,12 @@ export const BackgroundParticles: React.FC = () => {
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-    // Particle material
+    // Particle material with soft attenuation
     const particleMaterial = new THREE.PointsMaterial({
-      size: isDark ? 3.6 : 3.0,
+      size: isDark ? 2.8 : 2.2,
       vertexColors: true,
       transparent: true,
-      opacity: isDark ? 0.65 : 0.45,
+      opacity: isDark ? 0.6 : 0.35,
       blending: isDark ? THREE.AdditiveBlending : THREE.NormalBlending,
     });
 
@@ -84,40 +84,40 @@ export const BackgroundParticles: React.FC = () => {
     // Floating 3D Geometric Polyhedra for spatial depth
     const shapesGroup = new THREE.Group();
 
-    // 1. Icosahedron wireframe (Cyan glow)
-    const icosaGeo = new THREE.IcosahedronGeometry(80, 1);
+    // 1. Icosahedron wireframe (Amber / Gold)
+    const icosaGeo = new THREE.IcosahedronGeometry(75, 1);
     const wireMat1 = new THREE.MeshBasicMaterial({
+      color: isDark ? 0xf59e0b : 0xd97706,
+      wireframe: true,
+      transparent: true,
+      opacity: isDark ? 0.08 : 0.05,
+    });
+    const icosahedron = new THREE.Mesh(icosaGeo, wireMat1);
+    icosahedron.position.set(-340, 120, -140);
+    shapesGroup.add(icosahedron);
+
+    // 2. Torus wireframe (Cobalt / Slate)
+    const torusGeo = new THREE.TorusGeometry(90, 24, 12, 36);
+    const wireMat2 = new THREE.MeshBasicMaterial({
       color: isDark ? 0x38bdf8 : 0x0284c7,
       wireframe: true,
       transparent: true,
-      opacity: isDark ? 0.12 : 0.08,
-    });
-    const icosahedron = new THREE.Mesh(icosaGeo, wireMat1);
-    icosahedron.position.set(-320, 140, -120);
-    shapesGroup.add(icosahedron);
-
-    // 2. Torus wireframe (Purple glow)
-    const torusGeo = new THREE.TorusGeometry(95, 26, 14, 40);
-    const wireMat2 = new THREE.MeshBasicMaterial({
-      color: isDark ? 0xa855f7 : 0x7c3aed,
-      wireframe: true,
-      transparent: true,
-      opacity: isDark ? 0.10 : 0.07,
+      opacity: isDark ? 0.07 : 0.04,
     });
     const torus = new THREE.Mesh(torusGeo, wireMat2);
-    torus.position.set(340, -160, -160);
+    torus.position.set(320, -140, -180);
     shapesGroup.add(torus);
 
-    // 3. Octahedron wireframe (Emerald glow)
-    const octaGeo = new THREE.OctahedronGeometry(60, 0);
+    // 3. Octahedron wireframe (Emerald)
+    const octaGeo = new THREE.OctahedronGeometry(55, 0);
     const wireMat3 = new THREE.MeshBasicMaterial({
-      color: isDark ? 0x34d399 : 0x059669,
+      color: isDark ? 0x10b981 : 0x059669,
       wireframe: true,
       transparent: true,
-      opacity: isDark ? 0.11 : 0.07,
+      opacity: isDark ? 0.08 : 0.05,
     });
     const octa = new THREE.Mesh(octaGeo, wireMat3);
-    octa.position.set(20, 240, -220);
+    octa.position.set(40, 220, -200);
     shapesGroup.add(octa);
 
     scene.add(shapesGroup);
