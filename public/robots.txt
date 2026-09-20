@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://radheshyamsuthar.dev/sitemap.xml
+Sitemap: https://radheshyam.is-a.dev/sitemap.xml

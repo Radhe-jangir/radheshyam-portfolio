@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { TechStack } from './components/TechStack';
-import { Projects } from './components/Projects';
+import { Header } from './components/Header';
+import { Greeting } from './components/Greeting';
+import { Skills } from './components/Skills';
+import { Education } from './components/Education';
 import { Experience } from './components/Experience';
-import { Certifications } from './components/Certifications';
-import { CurrentFocus } from './components/CurrentFocus';
-import { WhyMe } from './components/WhyMe';
-import { Achievements } from './components/Achievements';
+import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { useTheme } from './context/ThemeContext';
@@ -21,19 +17,15 @@ export default function App() {
   useEffect(() => {
     const sections = [
       'home',
-      'about',
       'skills',
-      'projects',
+      'education',
       'experience',
-      'certifications',
-      'focus',
-      'whyme',
-      'achievements',
+      'projects',
       'contact',
     ];
 
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = window.scrollY + 180;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const sectionEl = document.getElementById(sections[i]);
@@ -52,27 +44,21 @@ export default function App() {
   }, []);
 
   return (
-    <div className={`relative min-h-screen antialiased overflow-x-hidden transition-colors duration-200 ${
-      isDark 
-        ? 'bg-[#000000] text-white selection:bg-neutral-800 selection:text-white bg-engineer-grid-dark' 
-        : 'bg-[#ffffff] text-neutral-900 selection:bg-neutral-200 selection:text-black bg-engineer-grid-light'
-    }`}>
+    <div
+      className={`min-h-screen antialiased transition-colors duration-150 ${
+        isDark ? 'bg-[#171c28] text-white' : 'bg-white text-[#1d212a]'
+      }`}
+    >
+      {/* Navigation Header */}
+      <Header activeSection={activeSection} />
 
-
-      {/* Sticky Glass Navbar */}
-      <Navbar activeSection={activeSection} />
-
-      {/* Main Content Area */}
-      <main id="main-content" className="relative z-10">
-        <Hero />
-        <About />
-        <TechStack />
-        <Projects />
+      {/* Main Sections */}
+      <main id="main-content">
+        <Greeting />
+        <Skills />
+        <Education />
         <Experience />
-        <Certifications />
-        <CurrentFocus />
-        <WhyMe />
-        <Achievements />
+        <Projects />
         <Contact />
       </main>
 

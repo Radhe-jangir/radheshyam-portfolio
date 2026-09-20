@@ -2,126 +2,99 @@
 
 @layer base {
   :root {
-    --bg-primary: #000000;
-    --bg-secondary: #0a0a0a;
-    --bg-card: #121212;
-    --border-color: rgba(255, 255, 255, 0.12);
-    --border-hover: rgba(255, 255, 255, 0.35);
-    --text-primary: #ffffff;
-    --text-muted: #a3a3a3;
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #121214;
+    --bg-card: #141416;
+    --border-subtle: #27272a;
+    --border-hover: #3f3f46;
+    --text-primary: #f5f5f5;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+    --accent: #3b82f6;
+    --accent-hover: #60a5fa;
   }
 
   html.light {
     --bg-primary: #ffffff;
     --bg-secondary: #f4f4f5;
     --bg-card: #ffffff;
-    --border-color: rgba(0, 0, 0, 0.12);
-    --border-hover: rgba(0, 0, 0, 0.35);
-    --text-primary: #000000;
-    --text-muted: #525252;
+    --border-subtle: #e4e4e7;
+    --border-hover: #d4d4d8;
+    --text-primary: #09090b;
+    --text-secondary: #52525b;
+    --text-muted: #71717a;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
   }
 
   html {
     scroll-behavior: smooth;
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
   body {
-    transition: background-color 0.2s ease, color 0.2s ease;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.15s ease, color 0.15s ease;
   }
 
-  /* Custom scrollbars */
+  /* Custom minimal scrollbars */
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
+    height: 6px;
   }
-  .dark ::-webkit-scrollbar-track,
   ::-webkit-scrollbar-track {
-    background: #000000;
+    background: transparent;
   }
-  .light ::-webkit-scrollbar-track {
-    background: #f4f4f5;
-  }
-
-  .dark ::-webkit-scrollbar-thumb,
-  ::-webkit-scrollbar-thumb {
-    background: #262626;
+  .dark ::-webkit-scrollbar-thumb {
+    background: #27272a;
     border-radius: 9999px;
   }
   .dark ::-webkit-scrollbar-thumb:hover {
-    background: #404040;
+    background: #3f3f46;
   }
   .light ::-webkit-scrollbar-thumb {
     background: #d4d4d8;
     border-radius: 9999px;
   }
-}
+  .light ::-webkit-scrollbar-thumb:hover {
+    background: #a1a1aa;
+  }
 
-.font-display {
-  font-family: 'Outfit', sans-serif;
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
 }
 
 .font-mono {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Crisp subtle grid */
-.bg-engineer-grid-dark {
+/* Subtle architectural grid pattern */
+.bg-subtle-grid-dark {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 36px 36px;
 }
 
-.bg-engineer-grid-light {
+.bg-subtle-grid-light {
   background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 36px 36px;
 }
 
-/* Monochrome text gradients */
-.gradient-text-mono {
-  background: linear-gradient(180deg, #ffffff 30%, #a3a3a3 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gradient-text-amber {
-  color: #ffffff;
-}
-
-.gradient-text-emerald {
-  color: #e5e5e5;
-}
-
-.gradient-text-titanium {
-  background: linear-gradient(180deg, #ffffff 20%, #a3a3a3 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Refined Monochrome Glass Cards */
-.dark .glass-card {
-  background: rgba(18, 18, 18, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.dark .glass-card:hover {
-  border-color: rgba(255, 255, 255, 0.28);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
-}
-
-.light .glass-card {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.04);
-}
-
-.light .glass-card:hover {
-  border-color: rgba(0, 0, 0, 0.28);
-  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.08);
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

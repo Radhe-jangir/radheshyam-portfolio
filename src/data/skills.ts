@@ -1,0 +1,85 @@
+import { TechCategory } from '../types';
+
+export const TECH_CATEGORIES: TechCategory[] = [
+  {
+    id: 'languages',
+    name: 'Languages',
+    iconName: 'Code',
+    description: 'Core programming and database query languages.',
+    skills: [
+      { name: 'Python', badge: 'Primary', isPrimary: true },
+      { name: 'SQL', isPrimary: true },
+      { name: 'TypeScript', isPrimary: true },
+      { name: 'JavaScript' },
+      { name: 'C / C++' },
+    ],
+  },
+  {
+    id: 'aiml',
+    name: 'AI & Machine Learning',
+    iconName: 'Cpu',
+    description: 'Statistical modeling, deep learning, NLP, and data manipulation.',
+    skills: [
+      { name: 'Scikit-learn', isPrimary: true },
+      { name: 'Pandas', isPrimary: true },
+      { name: 'NumPy', isPrimary: true },
+      { name: 'Generative AI & LLMs', isPrimary: true },
+      { name: 'Prompt Engineering' },
+      { name: 'OpenCV / Computer Vision' },
+      { name: 'Matplotlib & Seaborn' },
+    ],
+  },
+  {
+    id: 'backend',
+    name: 'Backend & APIs',
+    iconName: 'Server',
+    description: 'High-performance microservices, RESTful interfaces, and async handlers.',
+    skills: [
+      { name: 'FastAPI', isPrimary: true },
+      { name: 'Flask', isPrimary: true },
+      { name: 'REST APIs', isPrimary: true },
+      { name: 'Node.js' },
+      { name: 'Express' },
+      { name: 'Postman' },
+    ],
+  },
+  {
+    id: 'frontend',
+    name: 'Frontend',
+    iconName: 'Layout',
+    description: 'Component-driven interfaces for interactive data and model inspection.',
+    skills: [
+      { name: 'React', isPrimary: true },
+      { name: 'TypeScript', isPrimary: true },
+      { name: 'Tailwind CSS', isPrimary: true },
+      { name: 'Vite' },
+      { name: 'HTML5 & CSS3' },
+    ],
+  },
+  {
+    id: 'database',
+    name: 'Databases & Storage',
+    iconName: 'Database',
+    description: 'Relational data modeling, query optimization, and ORM integration.',
+    skills: [
+      { name: 'SQLite', isPrimary: true },
+      { name: 'PostgreSQL' },
+      { name: 'SQLAlchemy ORM', isPrimary: true },
+      { name: 'Data Modeling' },
+    ],
+  },
+  {
+    id: 'tools',
+    name: 'Tools & DevOps',
+    iconName: 'Wrench',
+    description: 'Development environments, version control, and production hosting.',
+    skills: [
+      { name: 'Git & GitHub', isPrimary: true },
+      { name: 'Docker' },
+      { name: 'Linux / Bash' },
+      { name: 'Vercel / Render' },
+      { name: 'VS Code' },
+      { name: 'Jupyter Notebooks' },
+    ],
+  },
+];
