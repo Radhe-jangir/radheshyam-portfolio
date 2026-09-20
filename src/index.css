@@ -2,27 +2,27 @@
 
 @layer base {
   :root {
-    --bg-primary: #0a0a0a;
-    --bg-secondary: #121214;
-    --bg-card: #141416;
-    --border-subtle: #27272a;
-    --border-hover: #3f3f46;
-    --text-primary: #f5f5f5;
+    --bg-primary: #171c28;
+    --bg-secondary: #1b2232;
+    --bg-card: #1b2232;
+    --border-subtle: #2d3748;
+    --border-hover: #4a5568;
+    --text-primary: #ffffff;
     --text-secondary: #a1a1aa;
-    --text-muted: #71717a;
+    --text-muted: #868e96;
     --accent: #3b82f6;
     --accent-hover: #60a5fa;
   }
 
   html.light {
     --bg-primary: #ffffff;
-    --bg-secondary: #f4f4f5;
-    --bg-card: #ffffff;
-    --border-subtle: #e4e4e7;
-    --border-hover: #d4d4d8;
-    --text-primary: #09090b;
-    --text-secondary: #52525b;
-    --text-muted: #71717a;
+    --bg-secondary: #f8fafc;
+    --bg-card: #f8fafc;
+    --border-subtle: #e2e8f0;
+    --border-hover: #cbd5e1;
+    --text-primary: #1d212a;
+    --text-secondary: #4b5563;
+    --text-muted: #64748b;
     --accent: #2563eb;
     --accent-hover: #1d4ed8;
   }

@@ -21,29 +21,29 @@ export const Contact: React.FC = () => {
   return (
     <section
       id="contact"
-      className={`py-20 md:py-28 transition-colors ${
+      className={`py-20 md:py-28 lg:py-32 transition-colors ${
         isDark ? 'bg-[#1b2232] text-white' : 'bg-[#f8fafc] text-[#1d212a]'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center">
+      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
+        <div className="max-w-4xl mx-auto text-center">
           {/* Section Heading */}
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-3"
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4"
             style={{ color: isDark ? '#ffffff' : '#001c55' }}
           >
             {contactConfig.title}
           </h2>
 
           <h3
-            className="text-xl sm:text-2xl font-bold mb-4"
+            className="text-2xl sm:text-3xl font-bold mb-5"
             style={{ color: isDark ? '#38bdf8' : '#0077b6' }}
           >
             {contactConfig.ctaHeading}
           </h3>
 
           <p
-            className={`text-base sm:text-lg leading-relaxed mb-8 ${
+            className={`text-base sm:text-lg md:text-xl leading-relaxed mb-8 ${
               isDark ? 'text-[#a1a1aa]' : 'text-[#4b5563]'
             }`}
           >
@@ -51,16 +51,16 @@ export const Contact: React.FC = () => {
           </p>
 
           {/* Location Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-mono mb-8 font-medium border-inherit">
-            <MapPin className="w-4 h-4 text-rose-500" />
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border text-xs sm:text-sm font-mono mb-10 font-medium border-inherit">
+            <MapPin className="w-4 h-4 text-rose-500 shrink-0" />
             <span>{contactConfig.location}</span>
           </div>
 
           {/* Direct Actions: Email Button & Copy Button */}
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-5 mb-12">
             <a
               href={`mailto:${contactConfig.email}`}
-              className="px-6 py-3 rounded-md text-sm font-semibold tracking-wide uppercase shadow-md transition-transform duration-150 hover:-translate-y-0.5 active:translate-y-0 text-white bg-blue-600 hover:bg-blue-700 inline-flex items-center gap-2"
+              className="px-7 py-3.5 rounded-md text-sm sm:text-base font-bold tracking-wide uppercase shadow-lg transition-transform duration-150 hover:-translate-y-0.5 active:translate-y-0 text-white bg-blue-600 hover:bg-blue-700 inline-flex items-center gap-2"
             >
               <Mail className="w-4 h-4" />
               <span>Email Me</span>
@@ -68,7 +68,7 @@ export const Contact: React.FC = () => {
 
             <button
               onClick={copyEmail}
-              className={`px-5 py-3 rounded-md text-sm font-mono font-medium border transition-colors inline-flex items-center gap-2 ${
+              className={`px-6 py-3.5 rounded-md text-sm sm:text-base font-mono font-medium border transition-all duration-150 inline-flex items-center gap-2 ${
                 isDark
                   ? 'border-[#39445a] bg-[#171c28] text-neutral-200 hover:bg-[#242c3d]'
                   : 'border-slate-300 bg-white text-neutral-700 hover:bg-slate-50'
@@ -89,12 +89,12 @@ export const Contact: React.FC = () => {
           </div>
 
           {/* Social Profiles Row */}
-          <div className="flex items-center justify-center gap-6 pt-6 border-t border-inherit">
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 pt-8 border-t border-inherit">
             <a
               href={socialMediaLinks.github}
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${
+              className={`inline-flex items-center gap-2 text-sm sm:text-base font-medium transition-colors ${
                 isDark ? 'text-neutral-400 hover:text-white' : 'text-neutral-600 hover:text-black'
               }`}
             >
@@ -107,7 +107,7 @@ export const Contact: React.FC = () => {
               href={socialMediaLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${
+              className={`inline-flex items-center gap-2 text-sm sm:text-base font-medium transition-colors ${
                 isDark ? 'text-neutral-400 hover:text-white' : 'text-neutral-600 hover:text-black'
               }`}
             >
@@ -118,7 +118,7 @@ export const Contact: React.FC = () => {
 
             <a
               href={`mailto:${contactConfig.email}`}
-              className={`inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${
+              className={`inline-flex items-center gap-2 text-sm sm:text-base font-medium transition-colors ${
                 isDark ? 'text-neutral-400 hover:text-white' : 'text-neutral-600 hover:text-black'
               }`}
             >
