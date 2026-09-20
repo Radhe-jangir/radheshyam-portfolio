@@ -38,11 +38,6 @@ export const Hero: React.FC = () => {
       id="home"
       className="relative min-h-[92vh] pt-28 pb-16 lg:pt-36 lg:pb-28 xl:pt-40 xl:pb-32 flex items-center justify-center overflow-hidden w-full"
     >
-      {/* Subtle Architectural Ambient Glow */}
-      <div className={`absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1000px] h-[450px] rounded-full blur-[160px] pointer-events-none ${
-        isDark ? 'bg-amber-500/[0.04]' : 'bg-amber-500/[0.03]'
-      }`} />
-
       <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 2xl:px-18 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 2xl:gap-20 items-center">
           
@@ -52,72 +47,74 @@ export const Hero: React.FC = () => {
             {/* Top Engineering Status Pill */}
             <div
               id="hero-badge"
-              className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider mb-6 transition-all border ${
+              className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono font-semibold uppercase tracking-wider mb-6 transition-all border ${
                 isDark 
-                  ? 'bg-[#121622] border-white/10 text-amber-400 shadow-sm' 
-                  : 'bg-amber-50/80 border-amber-200 text-amber-800 shadow-sm'
+                  ? 'bg-neutral-900 border-neutral-800 text-neutral-300' 
+                  : 'bg-neutral-100 border-neutral-300 text-neutral-700'
               }`}
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>SYSTEM ONLINE // BCA CS @ IGNTU • 8.8 MERIT</span>
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+              <span>RADHESHYAM_SUTHAR // BCA_CS_IGNTU • CGPA_8.8</span>
             </div>
 
             {/* Main Punchy Engineering Headline */}
             <h1
               id="hero-title"
-              className={`font-display text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black tracking-tight leading-[1.07] mb-6 transition-colors ${
-                isDark ? 'text-white' : 'text-slate-950'
+              className={`font-display text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.08] mb-6 transition-colors ${
+                isDark ? 'text-white' : 'text-neutral-950'
               }`}
             >
-              Engineering <span className="gradient-text-amber">Intelligent</span> Systems. <br className="hidden sm:inline" />
-              Extracting <span className="text-emerald-400">Signal</span> From Noise.
+              Engineering Intelligent Systems. <br className="hidden sm:inline" />
+              <span className={isDark ? 'text-neutral-400' : 'text-neutral-500'}>
+                Extracting Signal From Noise.
+              </span>
             </h1>
 
             {/* Supporting Bio Text */}
             <p
               id="hero-description"
               className={`text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mb-8 font-normal transition-colors ${
-                isDark ? 'text-slate-300' : 'text-slate-700'
+                isDark ? 'text-neutral-300' : 'text-neutral-700'
               }`}
             >
-              Hi, I&apos;m <span className={`font-semibold ${isDark ? 'text-white' : 'text-slate-950'}`}>Radheshyam Suthar</span> — an AI/ML and Data Analytics developer specialized in predictive machine learning models, statistical data analysis, and scalable full-stack applications with high-velocity execution.
+              Hi, I&apos;m <span className={`font-semibold ${isDark ? 'text-white' : 'text-neutral-950'}`}>Radheshyam Suthar</span> — an AI/ML and Data Analytics developer specialized in machine learning pipelines, predictive modeling, and scalable full-stack data applications.
             </p>
 
             {/* Proof-of-Work Metrics Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 w-full">
-              <div className={`p-3 rounded-xl border transition-all ${
-                isDark ? 'bg-[#0f131c]/80 border-white/[0.08] hover:border-amber-400/40' : 'bg-white border-slate-200 shadow-sm'
+              <div className={`p-3 rounded-lg border transition-all ${
+                isDark ? 'bg-neutral-900/50 border-neutral-800 hover:border-neutral-700' : 'bg-white border-neutral-200 shadow-sm'
               }`}>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block mb-0.5">Academic Merit</span>
-                <span className="text-xl font-mono font-bold text-amber-400">8.8 / 10</span>
-                <span className="text-[10px] text-slate-500 block truncate">IGNTU BCA CS</span>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block mb-0.5">Academic Merit</span>
+                <span className="text-xl font-mono font-bold text-white">8.8 / 10</span>
+                <span className="text-[10px] text-neutral-400 block truncate">IGNTU BCA CS</span>
               </div>
 
-              <div className={`p-3 rounded-xl border transition-all ${
-                isDark ? 'bg-[#0f131c]/80 border-white/[0.08] hover:border-emerald-400/40' : 'bg-white border-slate-200 shadow-sm'
+              <div className={`p-3 rounded-lg border transition-all ${
+                isDark ? 'bg-neutral-900/50 border-neutral-800 hover:border-neutral-700' : 'bg-white border-neutral-200 shadow-sm'
               }`}>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block mb-0.5">Projects Built</span>
-                <span className="text-xl font-mono font-bold text-emerald-400">10+ ML Builds</span>
-                <span className="text-[10px] text-slate-500 block truncate">Full-Stack &amp; AI</span>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block mb-0.5">Projects Built</span>
+                <span className="text-xl font-mono font-bold text-white">10+ ML Builds</span>
+                <span className="text-[10px] text-neutral-400 block truncate">Full-Stack &amp; AI</span>
               </div>
 
-              <div className={`p-3 rounded-xl border transition-all ${
-                isDark ? 'bg-[#0f131c]/80 border-white/[0.08] hover:border-sky-400/40' : 'bg-white border-slate-200 shadow-sm'
+              <div className={`p-3 rounded-lg border transition-all ${
+                isDark ? 'bg-neutral-900/50 border-neutral-800 hover:border-neutral-700' : 'bg-white border-neutral-200 shadow-sm'
               }`}>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block mb-0.5">Core Stack</span>
-                <span className="text-xl font-mono font-bold text-sky-400">Python • ML</span>
-                <span className="text-[10px] text-slate-500 block truncate">PyTorch • Scikit</span>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block mb-0.5">Core Stack</span>
+                <span className="text-xl font-mono font-bold text-white">Python • ML</span>
+                <span className="text-[10px] text-neutral-400 block truncate">PyTorch • Scikit</span>
               </div>
 
-              <div className={`p-3 rounded-xl border transition-all ${
-                isDark ? 'bg-[#0f131c]/80 border-white/[0.08] hover:border-emerald-400/40' : 'bg-white border-slate-200 shadow-sm'
+              <div className={`p-3 rounded-lg border transition-all ${
+                isDark ? 'bg-neutral-900/50 border-neutral-800 hover:border-neutral-700' : 'bg-white border-neutral-200 shadow-sm'
               }`}>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block mb-0.5">Availability</span>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block mb-0.5">Availability</span>
                 <div className="flex items-center gap-1.5 mt-1">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className={`text-xs font-mono font-bold ${isDark ? 'text-slate-200' : 'text-slate-900'}`}>Open to Roles</span>
+                  <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                  <span className={`text-xs font-mono font-bold ${isDark ? 'text-white' : 'text-neutral-900'}`}>Open to Roles</span>
                 </div>
-                <span className="text-[10px] text-slate-500 block truncate mt-0.5">Internship / AI Roles</span>
+                <span className="text-[10px] text-neutral-400 block truncate mt-0.5">Internship &amp; Roles</span>
               </div>
             </div>
 
@@ -126,38 +123,42 @@ export const Hero: React.FC = () => {
               <a
                 id="hero-explore-btn"
                 href="#projects"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-md shadow-amber-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold text-xs transition-all active:scale-[0.98] ${
+                  isDark
+                    ? 'bg-white text-black hover:bg-neutral-200'
+                    : 'bg-black text-white hover:bg-neutral-800'
+                }`}
               >
-                <span>Explore Technical Projects</span>
-                <ArrowRight className="w-4 h-4 text-slate-950" />
+                <span>Explore Projects</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </a>
 
               <a
                 id="hero-connect-btn"
                 href="#contact"
-                className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border font-bold text-xs transition-all hover:scale-[1.02] active:scale-[0.98] ${
+                className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border font-bold text-xs transition-all active:scale-[0.98] ${
                   isDark 
-                    ? 'bg-[#121622] border-white/10 text-slate-200 hover:bg-[#181d2c] hover:border-amber-400/50 shadow-sm' 
-                    : 'bg-white border-slate-300 text-slate-800 hover:bg-slate-50 hover:border-slate-400 shadow-sm'
+                    ? 'bg-neutral-900 border-neutral-800 text-white hover:bg-neutral-800 hover:border-neutral-700' 
+                    : 'bg-white border-neutral-300 text-neutral-900 hover:bg-neutral-100'
                 }`}
               >
-                <Mail className="w-4 h-4 text-amber-400" />
+                <Mail className="w-3.5 h-3.5" />
                 <span>Contact Me</span>
               </a>
 
               <button
                 id="hero-copy-email-btn"
                 onClick={handleCopyEmail}
-                className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl border font-mono font-semibold text-xs transition-all hover:scale-[1.02] active:scale-[0.98] ${
+                className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg border font-mono font-semibold text-xs transition-all active:scale-[0.98] ${
                   isDark 
-                    ? 'bg-transparent border-white/[0.08] text-slate-400 hover:text-white hover:border-white/20' 
-                    : 'bg-transparent border-slate-200 text-slate-600 hover:text-black hover:border-slate-400'
+                    ? 'bg-transparent border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-600' 
+                    : 'bg-transparent border-neutral-300 text-neutral-600 hover:text-black hover:border-neutral-400'
                 }`}
               >
                 {copiedEmail ? (
                   <>
-                    <Check className="w-3.5 h-3.5 text-emerald-400" />
-                    <span className="text-emerald-400 font-bold">Email Copied!</span>
+                    <Check className="w-3.5 h-3.5 text-white" />
+                    <span className="text-white font-bold">Email Copied!</span>
                   </>
                 ) : (
                   <>
@@ -169,16 +170,16 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Social Links Quick Access Strip */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5">
               <a
                 id="hero-github-link"
                 href={PERSONAL_INFO.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className={`p-2.5 rounded-xl border transition-all ${
+                className={`p-2.5 rounded-lg border transition-all ${
                   isDark 
-                    ? 'bg-[#121622] border-white/10 text-slate-300 hover:text-amber-400 hover:border-amber-400/40 shadow-sm' 
-                    : 'bg-white border-slate-300 text-slate-700 hover:text-black hover:border-amber-500 shadow-sm'
+                    ? 'bg-neutral-900 border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-600' 
+                    : 'bg-white border-neutral-300 text-neutral-700 hover:text-black hover:border-neutral-400'
                 }`}
                 aria-label="GitHub Profile"
               >
@@ -189,10 +190,10 @@ export const Hero: React.FC = () => {
                 href={PERSONAL_INFO.linkedinUrl}
                 target="_blank"
                 rel="noreferrer"
-                className={`p-2.5 rounded-xl border transition-all ${
+                className={`p-2.5 rounded-lg border transition-all ${
                   isDark 
-                    ? 'bg-[#121622] border-white/10 text-slate-300 hover:text-amber-400 hover:border-amber-400/40 shadow-sm' 
-                    : 'bg-white border-slate-300 text-slate-700 hover:text-black hover:border-amber-500 shadow-sm'
+                    ? 'bg-neutral-900 border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-600' 
+                    : 'bg-white border-neutral-300 text-neutral-700 hover:text-black hover:border-neutral-400'
                 }`}
                 aria-label="LinkedIn Profile"
               >
@@ -201,10 +202,10 @@ export const Hero: React.FC = () => {
               <a
                 id="hero-email-link"
                 href={`mailto:${PERSONAL_INFO.email}`}
-                className={`p-2.5 rounded-xl border transition-all ${
+                className={`p-2.5 rounded-lg border transition-all ${
                   isDark 
-                    ? 'bg-[#121622] border-white/10 text-slate-300 hover:text-amber-400 hover:border-amber-400/40 shadow-sm' 
-                    : 'bg-white border-slate-300 text-slate-700 hover:text-black hover:border-amber-500 shadow-sm'
+                    ? 'bg-neutral-900 border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-600' 
+                    : 'bg-white border-neutral-300 text-neutral-700 hover:text-black hover:border-neutral-400'
                 }`}
                 aria-label="Email Radheshyam"
               >
@@ -214,18 +215,18 @@ export const Hero: React.FC = () => {
 
           </div>
 
-          {/* Right Column: Developer ID Card + Interactive AI Workbench */}
+          {/* Right Column: Developer ID Card + Monochrome Developer Console */}
           <div className="lg:col-span-5 xl:col-span-5 flex flex-col gap-4 items-center w-full">
             {/* Developer Identifier Card */}
-            <div className={`w-full flex items-center justify-between p-3.5 sm:p-4 rounded-2xl border transition-all ${
+            <div className={`w-full flex items-center justify-between p-3.5 sm:p-4 rounded-xl border transition-all ${
               isDark 
-                ? 'bg-[#0f131c]/90 backdrop-blur-xl border-white/[0.08] text-white shadow-xl shadow-black/40' 
-                : 'bg-white/95 backdrop-blur-xl border-slate-200 text-slate-900 shadow-md'
+                ? 'bg-neutral-950 border-neutral-800 text-white shadow-xl shadow-black' 
+                : 'bg-white border-neutral-300 text-neutral-900 shadow-sm'
             }`}>
               <div className="flex items-center gap-3">
                 {/* Profile Image / Placeholder */}
-                <div className={`relative w-12 h-12 rounded-xl border flex items-center justify-center overflow-hidden shrink-0 ${
-                  isDark ? 'bg-[#151a27] border-white/10 text-white' : 'bg-slate-100 border-slate-300 text-slate-900'
+                <div className={`relative w-12 h-12 rounded-lg border flex items-center justify-center overflow-hidden shrink-0 ${
+                  isDark ? 'bg-neutral-900 border-neutral-800 text-white' : 'bg-neutral-100 border-neutral-300 text-black'
                 }`}>
                   {!imgError ? (
                     <img
@@ -236,19 +237,19 @@ export const Hero: React.FC = () => {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="font-mono font-bold text-base tracking-wider text-amber-400">
+                    <div className="font-mono font-bold text-base tracking-wider text-white">
                       RS
                     </div>
                   )}
-                  <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-slate-950" />
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-white border-2 border-black" />
                 </div>
 
                 <div className="flex flex-col">
                   <div className="flex items-center gap-1.5">
                     <span className="font-display font-bold text-sm sm:text-base">{PERSONAL_INFO.name}</span>
-                    <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
+                    <CheckCircle className="w-3.5 h-3.5 text-white" />
                   </div>
-                  <span className={`font-mono text-xs ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                  <span className={`font-mono text-xs ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>
                     AI/ML &amp; Data Analytics Developer
                   </span>
                 </div>
@@ -256,10 +257,10 @@ export const Hero: React.FC = () => {
 
               <a
                 href="#about"
-                className={`hidden sm:inline-flex items-center gap-1 text-[11px] font-mono px-3 py-1.5 rounded-lg border transition-all ${
+                className={`hidden sm:inline-flex items-center gap-1 text-[11px] font-mono px-3 py-1.5 rounded-md border transition-all ${
                   isDark 
-                    ? 'bg-[#121622] border-white/10 text-amber-300 hover:text-white hover:border-amber-400' 
-                    : 'bg-slate-100 border-slate-300 text-slate-800 hover:text-black hover:border-amber-500'
+                    ? 'bg-neutral-900 border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-600' 
+                    : 'bg-neutral-100 border-neutral-300 text-neutral-700 hover:text-black hover:border-neutral-400'
                 }`}
               >
                 <span>About</span>
@@ -267,7 +268,7 @@ export const Hero: React.FC = () => {
               </a>
             </div>
 
-            {/* Interactive Multi-Mode AI Workbench */}
+            {/* Monochrome 2D Developer Console */}
             <HeroAiVisualizer />
           </div>
 

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { BackgroundParticles } from './components/BackgroundParticles';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -53,13 +52,12 @@ export default function App() {
   }, []);
 
   return (
-    <div className={`relative min-h-screen antialiased overflow-x-hidden transition-colors duration-300 ${
+    <div className={`relative min-h-screen antialiased overflow-x-hidden transition-colors duration-200 ${
       isDark 
-        ? 'bg-[#090b10] text-slate-100 selection:bg-amber-500/30 selection:text-amber-200 bg-engineer-grid-dark' 
-        : 'bg-[#f8fafc] text-slate-900 selection:bg-amber-500/30 selection:text-amber-900 bg-engineer-grid-light'
+        ? 'bg-[#000000] text-white selection:bg-neutral-800 selection:text-white bg-engineer-grid-dark' 
+        : 'bg-[#ffffff] text-neutral-900 selection:bg-neutral-200 selection:text-black bg-engineer-grid-light'
     }`}>
-      {/* Interactive 3D WebGL Multi-Color Background Particles */}
-      <BackgroundParticles />
+
 
       {/* Sticky Glass Navbar */}
       <Navbar activeSection={activeSection} />

@@ -13,11 +13,11 @@ export const PERSONAL_INFO = {
   name: 'Radheshyam Suthar',
   initials: 'RS',
   headline: 'AI/ML & Data Analytics Developer',
-  badge: 'AI/ML • DATA ANALYTICS • PYTHON • 3D SPATIAL SYSTEMS',
+  badge: 'AI/ML • DATA ANALYTICS • PYTHON • MACHINE LEARNING SYSTEMS',
   heroHeading: 'Turning Data Into Intelligence.',
   heroDescription:
     "Hi, I'm Radheshyam Suthar — an AI/ML and Data Analytics developer building practical machine learning systems, intelligent applications and data-driven solutions with high-velocity engineering.",
-  currentStatus: 'Currently exploring AI/ML Research, Spatial Intelligence & LLM Security',
+  currentStatus: 'Currently exploring Applied AI, Deep Learning & LLM Systems',
   statusShort: 'Available for AI/ML & Data Analytics Internships & High-Impact Roles',
   email: 'jangirradhe175@gmail.com',
   githubUrl: 'https://github.com/Radhe-jangir',

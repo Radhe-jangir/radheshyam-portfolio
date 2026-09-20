@@ -53,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navLinks = [
     { label: 'About', href: '#about' },
     { label: 'Tech Stack', href: '#skills' },
-    { label: '3D Projects', href: '#projects' },
+    { label: 'Projects', href: '#projects' },
     { label: 'Experience', href: '#experience' },
     { label: 'Certifications', href: '#certifications' },
     { label: 'Focus', href: '#focus' },
@@ -64,11 +64,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header
       id="main-navigation"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         isScrolled
           ? isDark
-            ? 'bg-[#070913]/85 backdrop-blur-xl border-b border-indigo-500/15 py-3 shadow-2xl shadow-black/60'
-            : 'bg-white/85 backdrop-blur-xl border-b border-slate-200/80 py-3 shadow-md shadow-slate-200/50'
+            ? 'bg-black/90 backdrop-blur-md border-b border-white/10 py-3 shadow-xl'
+            : 'bg-white/90 backdrop-blur-md border-b border-neutral-200 py-3 shadow-sm'
           : 'bg-transparent py-5'
       }`}
     >
@@ -80,10 +80,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           href="#home"
           className="flex items-center gap-3.5 group focus:outline-none"
         >
-          <div className={`w-9 h-9 rounded-xl flex items-center justify-center font-mono font-bold text-sm tracking-wider transition-all duration-300 group-hover:border-amber-400/50 border ${
+          <div className={`w-9 h-9 rounded-lg flex items-center justify-center font-mono font-bold text-sm tracking-wider transition-all duration-200 ${
             isDark 
-              ? 'bg-[#121622] border-white/10 text-amber-400 shadow-sm shadow-black/40' 
-              : 'bg-white border-slate-300 text-amber-600 shadow-sm'
+              ? 'bg-white text-black shadow-sm' 
+              : 'bg-black text-white shadow-sm'
           }`}>
             RS
           </div>
@@ -91,18 +91,22 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
               <span className={`font-display font-bold text-sm tracking-tight transition-colors ${
-                isDark ? 'text-white group-hover:text-amber-400' : 'text-slate-900 group-hover:text-amber-600'
+                isDark ? 'text-white' : 'text-neutral-900'
               }`}>
                 {PERSONAL_INFO.name}
               </span>
-              {/* Pulsing Status Dot */}
-              <span className="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              {/* Status Dot */}
+              <span className={`hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono border ${
+                isDark 
+                  ? 'bg-neutral-900 border-neutral-800 text-neutral-300' 
+                  : 'bg-neutral-100 border-neutral-300 text-neutral-700'
+              }`}>
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                 Available
               </span>
             </div>
             <span className={`font-mono text-[9px] tracking-widest uppercase font-semibold ${
-              isDark ? 'text-slate-400' : 'text-slate-500'
+              isDark ? 'text-neutral-400' : 'text-neutral-500'
             }`}>
               AI/ML • DATA SYSTEMS
             </span>
@@ -121,11 +125,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className={`transition-all py-1 cursor-pointer whitespace-nowrap ${
                   isActive
                     ? isDark
-                      ? 'text-amber-400 font-bold underline underline-offset-8 decoration-amber-400 decoration-2'
-                      : 'text-amber-600 font-bold underline underline-offset-8 decoration-amber-600 decoration-2'
+                      ? 'text-white font-bold underline underline-offset-8 decoration-white decoration-2'
+                      : 'text-black font-bold underline underline-offset-8 decoration-black decoration-2'
                     : isDark
-                      ? 'text-slate-400 hover:text-white'
-                      : 'text-slate-600 hover:text-black'
+                      ? 'text-neutral-400 hover:text-white'
+                      : 'text-neutral-600 hover:text-black'
                 }`}
               >
                 {link.label}
@@ -143,16 +147,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={toggleTheme}
             aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
             title={`Switch to ${isDark ? 'Light' : 'Dark'} Mode`}
-            className={`p-2 rounded-xl border transition-all active:scale-95 flex items-center justify-center ${
+            className={`p-2 rounded-lg border transition-all active:scale-95 flex items-center justify-center ${
               isDark 
-                ? 'bg-[#121622] border-white/10 text-amber-300 hover:bg-[#181d2c] hover:border-amber-400/40 shadow-sm' 
-                : 'bg-white border-slate-300 text-slate-800 hover:bg-slate-100 hover:border-slate-400 shadow-sm'
+                ? 'bg-neutral-900 border-neutral-800 text-neutral-300 hover:bg-neutral-800 hover:border-neutral-700' 
+                : 'bg-neutral-100 border-neutral-300 text-neutral-800 hover:bg-neutral-200'
             }`}
           >
             {isDark ? (
-              <Sun className="w-4 h-4 text-amber-400 transition-transform hover:rotate-45" />
+              <Sun className="w-4 h-4 text-white transition-transform hover:rotate-45" />
             ) : (
-              <Moon className="w-4 h-4 text-slate-800 transition-transform hover:-rotate-12" />
+              <Moon className="w-4 h-4 text-black transition-transform hover:-rotate-12" />
             )}
           </button>
 
@@ -161,16 +165,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             id="nav-copy-email-btn"
             onClick={handleCopyEmail}
             title="Click to copy email address"
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono border transition-all active:scale-95 ${
+            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-mono border transition-all active:scale-95 ${
               isDark 
-                ? 'bg-[#121622] border-white/10 text-slate-300 hover:border-amber-400/40 hover:text-white' 
-                : 'bg-white border-slate-300 text-slate-700 hover:border-amber-500/50 hover:text-black shadow-sm'
+                ? 'bg-neutral-900 border-neutral-800 text-neutral-300 hover:border-neutral-600 hover:text-white' 
+                : 'bg-white border-neutral-300 text-neutral-700 hover:border-neutral-400 hover:text-black'
             }`}
           >
             {copiedEmail ? (
               <>
-                <Check className="w-3.5 h-3.5 text-emerald-400" />
-                <span className="text-[11px] font-bold text-emerald-400">Copied!</span>
+                <Check className="w-3.5 h-3.5 text-white" />
+                <span className="text-[11px] font-bold text-white">Copied!</span>
               </>
             ) : (
               <>
@@ -184,10 +188,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           <a
             id="nav-connect-btn"
             href="#contact"
-            className="flex items-center gap-1.5 px-4 py-1.5 rounded-xl text-xs font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-sm transition-all hover:scale-[1.02] active:scale-95"
+            className={`flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-bold transition-all active:scale-95 ${
+              isDark
+                ? 'bg-white text-black hover:bg-neutral-200 shadow-sm'
+                : 'bg-black text-white hover:bg-neutral-800 shadow-sm'
+            }`}
           >
             <span>Let&apos;s Connect</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-slate-950" />
+            <ArrowUpRight className="w-3.5 h-3.5" />
           </a>
         </div>
 
@@ -197,23 +205,23 @@ export const Navbar: React.FC<NavbarProps> = ({
             id="mobile-theme-toggle-btn"
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className={`p-2 rounded-xl border transition-colors ${
+            className={`p-2 rounded-lg border transition-colors ${
               isDark 
-                ? 'bg-slate-900 border-slate-800 text-amber-300' 
-                : 'bg-slate-100 border-slate-300 text-slate-800'
+                ? 'bg-neutral-900 border-neutral-800 text-white' 
+                : 'bg-neutral-100 border-neutral-300 text-black'
             }`}
           >
-            {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-900" />}
+            {isDark ? <Sun className="w-4 h-4 text-white" /> : <Moon className="w-4 h-4 text-black" />}
           </button>
 
           <button
             id="mobile-menu-toggle-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle mobile menu"
-            className={`p-2 rounded-xl border transition-colors ${
+            className={`p-2 rounded-lg border transition-colors ${
               isDark 
-                ? 'bg-slate-900 border-slate-800 text-white' 
-                : 'bg-slate-100 border-slate-300 text-black'
+                ? 'bg-neutral-900 border-neutral-800 text-white' 
+                : 'bg-neutral-100 border-neutral-300 text-black'
             }`}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -227,7 +235,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div
           id="mobile-dropdown-menu"
           className={`xl:hidden fixed inset-x-0 top-[60px] p-6 border-b shadow-2xl transition-all ${
-            isDark ? 'bg-[#070913]/95 backdrop-blur-2xl border-indigo-500/20 text-white' : 'bg-white/95 backdrop-blur-2xl border-slate-200 text-slate-900'
+            isDark ? 'bg-black/95 backdrop-blur-xl border-neutral-800 text-white' : 'bg-white/95 backdrop-blur-xl border-neutral-200 text-black'
           }`}
         >
           <div className="flex flex-col gap-3">
@@ -238,8 +246,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => setMobileMenuOpen(false)}
                 className={`py-2 px-3 rounded-lg text-sm font-semibold transition-colors flex items-center justify-between ${
                   activeSection === link.href.substring(1)
-                    ? isDark ? 'bg-indigo-950/60 text-cyan-400' : 'bg-indigo-50 text-indigo-600'
-                    : isDark ? 'text-slate-300 hover:bg-slate-900' : 'text-slate-700 hover:bg-slate-100'
+                    ? isDark ? 'bg-neutral-900 text-white font-bold' : 'bg-neutral-100 text-black font-bold'
+                    : isDark ? 'text-neutral-400 hover:bg-neutral-900' : 'text-neutral-600 hover:bg-neutral-100'
                 }`}
               >
                 <span>{link.label}</span>
@@ -247,14 +255,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               </a>
             ))}
 
-            <div className="pt-4 mt-2 border-t border-slate-800/80 flex flex-col gap-3">
+            <div className="pt-4 mt-2 border-t border-neutral-800 flex flex-col gap-3">
               <button
                 onClick={() => {
                   handleCopyEmail();
                   setMobileMenuOpen(false);
                 }}
-                className={`w-full py-2.5 px-4 rounded-xl text-xs font-mono border flex items-center justify-center gap-2 ${
-                  isDark ? 'bg-slate-900 border-slate-800 text-slate-200' : 'bg-slate-100 border-slate-300 text-slate-800'
+                className={`w-full py-2.5 px-4 rounded-lg text-xs font-mono border flex items-center justify-center gap-2 ${
+                  isDark ? 'bg-neutral-900 border-neutral-800 text-neutral-200' : 'bg-neutral-100 border-neutral-300 text-neutral-800'
                 }`}
               >
                 <Copy className="w-3.5 h-3.5" />
@@ -264,7 +272,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-center text-white bg-gradient-to-r from-indigo-600 to-cyan-600 shadow-md"
+                className={`w-full py-2.5 px-4 rounded-lg text-xs font-bold text-center ${
+                  isDark ? 'bg-white text-black' : 'bg-black text-white'
+                }`}
               >
                 Let&apos;s Connect
               </a>
