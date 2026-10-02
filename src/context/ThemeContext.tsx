@@ -23,6 +23,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   useEffect(() => {
     const root = document.documentElement;
+    root.dataset.theme = theme;
     if (theme === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
@@ -31,6 +32,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       root.classList.remove('dark');
     }
     localStorage.setItem('portfolio-theme', theme);
+    localStorage.setItem('rdj-theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

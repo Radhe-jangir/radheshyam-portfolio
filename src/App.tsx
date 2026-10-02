@@ -1,28 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Greeting } from './components/Greeting';
-import { Skills } from './components/Skills';
-import { Education } from './components/Education';
-import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
+import { About } from './components/About';
+import { Experience } from './components/Experience';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { useTheme } from './context/ThemeContext';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<string>('home');
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
 
   useEffect(() => {
-    const sections = [
-      'home',
-      'skills',
-      'education',
-      'experience',
-      'projects',
-      'contact',
-    ];
+    const sections = ['home', 'work', 'about', 'skills', 'experience', 'contact'];
 
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 180;
@@ -44,26 +33,18 @@ export default function App() {
   }, []);
 
   return (
-    <div
-      className={`min-h-screen antialiased transition-colors duration-150 ${
-        isDark ? 'bg-[#171c28] text-white' : 'bg-white text-[#1d212a]'
-      }`}
-    >
-      {/* Navigation Header */}
+    <>
       <Header activeSection={activeSection} />
 
-      {/* Main Sections */}
-      <main id="main-content">
+      <main id="main">
         <Greeting />
-        <Skills />
-        <Education />
-        <Experience />
         <Projects />
+        <About />
+        <Experience />
         <Contact />
       </main>
 
-      {/* Footer */}
       <Footer />
-    </div>
+    </>
   );
 }

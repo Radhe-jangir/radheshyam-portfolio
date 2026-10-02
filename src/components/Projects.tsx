@@ -1,152 +1,285 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { projects } from '../portfolio';
-import { useTheme } from '../context/ThemeContext';
-import { Github, ExternalLink, ArrowUpRight, FolderGit2 } from 'lucide-react';
+
+interface ProjectDisplay {
+  id: string;
+  name: string;
+  category: 'ai' | 'nlp' | 'web';
+  artClass: string;
+  miniTitle: string;
+  eyebrow: string;
+  description: string;
+  tags: string[];
+  githubUrl: string;
+  liveDemoUrl?: string;
+}
+
+const PROJECT_LIST: ProjectDisplay[] = [
+  {
+    id: 'predictra-ai',
+    name: 'Predictra AI',
+    category: 'ai',
+    artClass: 'art-one',
+    miniTitle: 'predictra.ai',
+    eyebrow: 'Machine Learning / Analytics',
+    description:
+      'AI-powered business analytics and machine-learning platform supporting CSV/Excel data profiling, automated cleaning, interactive visualization, ML model training, forecasting and AI-generated insights.',
+    tags: ['React', 'FastAPI', 'Python', 'Scikit-learn', 'Pandas', 'OpenRouter'],
+    githubUrl: 'https://github.com/Radhe-jangir/predictra-ai',
+    liveDemoUrl: 'https://predictra-ai.example.com',
+  },
+  {
+    id: 'sentiforge',
+    name: 'SentiForge',
+    category: 'nlp',
+    artClass: 'art-two',
+    miniTitle: 'sentiforge.nlp',
+    eyebrow: 'NLP / Text Analytics',
+    description:
+      'Full-stack NLP platform for multi-label sentiment classification, trend analysis and automated PDF report generation with high accuracy.',
+    tags: ['Python', 'Flask', 'TextBlob', 'Pandas', 'Matplotlib'],
+    githubUrl: 'https://github.com/Radhe-jangir/sentiforge',
+    liveDemoUrl: 'https://sentiforge-demo.example.com',
+  },
+  {
+    id: 'ecotwin-intelligence',
+    name: 'EcoTwin Intelligence',
+    category: 'web',
+    artClass: 'art-three',
+    miniTitle: 'ecotwin.eco',
+    eyebrow: 'Generative AI / Green Tech',
+    description:
+      'Full-stack carbon-footprint tracking platform with AI-generated environmental impact analysis and real-time data visualization.',
+    tags: ['React 19', 'TypeScript', 'Express', 'Google Generative AI'],
+    githubUrl: 'https://github.com/Radhe-jangir/ecotwin-intelligence',
+    liveDemoUrl: 'https://ecotwin-demo.example.com',
+  },
+  {
+    id: 'ai-resume-screening-system',
+    name: 'AI Resume Screening System',
+    category: 'ai',
+    artClass: 'art-four',
+    miniTitle: 'resume.screen',
+    eyebrow: 'Recruitment AI / NLP',
+    description:
+      'Flask-based recruitment platform performing intelligent resume parsing, NLP-based candidate scoring, and automated candidate ranking workflows.',
+    tags: ['Python', 'Flask', 'Scikit-learn', 'NLP', 'Pandas'],
+    githubUrl: 'https://github.com/Radhe-jangir/resume-screening-system',
+  },
+];
 
 export const Projects: React.FC = () => {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
+  const [filter, setFilter] = useState<'all' | 'ai' | 'web' | 'nlp'>('all');
+  const [activeModalProject, setActiveModalProject] = useState<ProjectDisplay | null>(null);
+
+  const filteredProjects = PROJECT_LIST.filter(
+    (p) => filter === 'all' || p.category === filter
+  );
 
   return (
-    <section
-      id="projects"
-      className={`py-20 md:py-28 lg:py-32 transition-colors ${
-        isDark ? 'bg-[#171c28] text-white' : 'bg-white text-[#1d212a]'
-      }`}
-    >
-      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
-        {/* Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <h2
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4"
-            style={{ color: isDark ? '#ffffff' : '#001c55' }}
-          >
-            Projects
-          </h2>
-          <p
-            className={`text-sm sm:text-base md:text-lg font-mono tracking-wider font-semibold uppercase ${
-              isDark ? 'text-blue-400' : 'text-blue-600'
-            }`}
-          >
-            Open-Source Applications &amp; Machine Learning Systems
+    <>
+      <section className="section container" id="work" aria-labelledby="work-title">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">01 / Selected work</span>
+            <h2 id="work-title">Ideas brought to life.</h2>
+          </div>
+          <p>
+            Real-world AI/ML applications, data analytics platforms, and full-stack systems built by Radheshyam.
           </p>
         </div>
 
-        {/* Project Cards Grid (Full-Wide 2-Column Responsive Layout) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          {projects.data.map((project) => (
-            <div
-              key={project.id}
-              className={`p-7 sm:p-9 md:p-10 rounded-2xl border flex flex-col justify-between transition-all duration-200 hover:-translate-y-1.5 ${
-                isDark
-                  ? 'bg-[#1b2232] border-[#2d3748] shadow-md hover:border-blue-500/50'
-                  : 'bg-[#f8fafc] border-[#e2e8f0] shadow-sm hover:border-blue-400/60'
-              }`}
-            >
-              <div>
-                <div className="flex items-center justify-between gap-4 mb-4">
-                  <div className="flex items-center gap-3">
-                    <FolderGit2 className="w-7 h-7 text-blue-500 shrink-0" />
-                    <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">
-                      {project.name}
-                    </h3>
-                  </div>
+        {/* Category Filters */}
+        <div className="filters" role="group" aria-label="Filter projects">
+          <button
+            className="filter"
+            type="button"
+            data-filter="all"
+            aria-pressed={filter === 'all'}
+            onClick={() => setFilter('all')}
+          >
+            All projects
+          </button>
+          <button
+            className="filter"
+            type="button"
+            data-filter="ai"
+            aria-pressed={filter === 'ai'}
+            onClick={() => setFilter('ai')}
+          >
+            AI / Machine Learning
+          </button>
+          <button
+            className="filter"
+            type="button"
+            data-filter="web"
+            aria-pressed={filter === 'web'}
+            onClick={() => setFilter('web')}
+          >
+            Web apps
+          </button>
+          <button
+            className="filter"
+            type="button"
+            data-filter="nlp"
+            aria-pressed={filter === 'nlp'}
+            onClick={() => setFilter('nlp')}
+          >
+            NLP &amp; Text
+          </button>
+        </div>
 
-                  <div className="flex items-center gap-2">
+        {/* Project Cards Grid */}
+        <div className="projects">
+          {filteredProjects.map((project) => (
+            <article
+              key={project.id}
+              className="project"
+              data-category={project.category}
+            >
+              <div className={`project-art ${project.artClass}`} aria-hidden="true">
+                <div className="mini-window">
+                  <div className="mini-title">{project.miniTitle}</div>
+                  <div className="mini-line"></div>
+                  <div className="mini-line short"></div>
+                  <div className="mini-blocks">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="project-body">
+                <span className="eyebrow">{project.eyebrow}</span>
+                <h3>{project.name}</h3>
+                <p>{project.description}</p>
+
+                <div className="tags">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', marginTop: 'auto' }}>
+                  <button
+                    className="text-button"
+                    type="button"
+                    onClick={() => setActiveModalProject(project)}
+                    aria-haspopup="dialog"
+                  >
+                    View details <span aria-hidden="true">↗</span>
+                  </button>
+
+                  <div style={{ display: 'flex', gap: '10px' }}>
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label={`GitHub repo for ${project.name}`}
-                        className={`p-2.5 rounded-full transition-all ${
-                          isDark
-                            ? 'hover:bg-[#242c3d] text-neutral-300 hover:text-white hover:scale-110'
-                            : 'hover:bg-slate-200 text-neutral-600 hover:text-black hover:scale-110'
-                        }`}
+                        className="text-button"
+                        style={{ fontSize: '0.82rem', color: 'var(--muted)' }}
                       >
-                        <Github className="w-5 h-5" />
+                        Code ↗
                       </a>
                     )}
-
                     {project.liveDemoUrl && (
                       <a
                         href={project.liveDemoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label={`Live demo for ${project.name}`}
-                        className={`p-2.5 rounded-full transition-all ${
-                          isDark
-                            ? 'hover:bg-[#242c3d] text-neutral-300 hover:text-white hover:scale-110'
-                            : 'hover:bg-slate-200 text-neutral-600 hover:text-black hover:scale-110'
-                        }`}
+                        className="text-button"
+                        style={{ fontSize: '0.82rem', color: 'var(--accent)' }}
                       >
-                        <ExternalLink className="w-5 h-5" />
+                        Live ↗
                       </a>
                     )}
                   </div>
                 </div>
-
-                <p
-                  className={`text-base sm:text-lg leading-relaxed mb-6 ${
-                    isDark ? 'text-[#a1a1aa]' : 'text-[#4b5563]'
-                  }`}
-                >
-                  {project.description}
-                </p>
               </div>
-
-              <div>
-                {/* Language / Tech tags with color dots */}
-                <div className="flex flex-wrap items-center gap-x-5 gap-y-2.5 pt-5 border-t border-inherit">
-                  {project.languages.map((lang) => (
-                    <div key={lang.name} className="flex items-center gap-2">
-                      <span
-                        className="w-3 h-3 rounded-full shrink-0"
-                        style={{ backgroundColor: lang.color }}
-                      />
-                      <span className="text-xs sm:text-sm font-mono font-medium">
-                        {lang.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Primary Action Buttons */}
-                <div className="flex flex-wrap items-center gap-3.5 mt-6">
-                  {project.liveDemoUrl && (
-                    <a
-                      href={project.liveDemoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-xs sm:text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow transition-all"
-                    >
-                      <span>Live Demo</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
-                  )}
-
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-medium border transition-colors ${
-                        isDark
-                          ? 'border-[#39445a] text-neutral-300 hover:bg-[#242c3d] hover:text-white'
-                          : 'border-slate-300 text-neutral-700 hover:bg-slate-100 hover:text-black'
-                      }`}
-                    >
-                      <Github className="w-4 h-4" />
-                      <span>Code</span>
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
+            </article>
           ))}
         </div>
-      </div>
-    </section>
+
+        <p id="project-count" className="form-note" role="status" style={{ marginTop: '24px' }}>
+          Showing {filteredProjects.length} project{filteredProjects.length === 1 ? '' : 's'}.
+        </p>
+      </section>
+
+      {/* Project Details Modal */}
+      {activeModalProject && (
+        <dialog
+          id="project-dialog"
+          open
+          aria-labelledby="dialog-title"
+          aria-describedby="dialog-description"
+        >
+          <div className="dialog-top">
+            <button
+              className="icon-btn"
+              id="close-dialog"
+              type="button"
+              onClick={() => setActiveModalProject(null)}
+              aria-label="Close project details"
+            >
+              ×
+            </button>
+          </div>
+
+          <span className="eyebrow">{activeModalProject.eyebrow}</span>
+          <h2 id="dialog-title" style={{ marginTop: '4px', marginBottom: '16px' }}>
+            {activeModalProject.name}
+          </h2>
+          <p id="dialog-description" style={{ fontSize: '1rem', lineHeight: '1.7', marginBottom: '20px' }}>
+            {activeModalProject.description}
+          </p>
+
+          <div style={{ marginBottom: '24px' }}>
+            <strong style={{ display: 'block', marginBottom: '8px', fontSize: '0.85rem', color: 'var(--text)' }}>
+              Technologies &amp; Architecture:
+            </strong>
+            <div className="tags">
+              {activeModalProject.tags.map((t) => (
+                <span key={t} className="tag">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', gap: '12px', marginTop: '16px' }}>
+            {activeModalProject.githubUrl && (
+              <a
+                className="btn btn-primary"
+                href={activeModalProject.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub Repository <span aria-hidden="true">↗</span>
+              </a>
+            )}
+            {activeModalProject.liveDemoUrl && (
+              <a
+                className="btn"
+                href={activeModalProject.liveDemoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Live Demo <span aria-hidden="true">↗</span>
+              </a>
+            )}
+            <button
+              className="btn"
+              type="button"
+              onClick={() => setActiveModalProject(null)}
+            >
+              Close
+            </button>
+          </div>
+        </dialog>
+      )}
+    </>
   );
 };
